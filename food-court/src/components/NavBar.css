@@ -1,0 +1,51 @@
+.Main-Div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar {
+    position: fixed;
+    top: 25px;
+    display: flex;
+    width: 1000px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.2); 
+    backdrop-filter: blur(10px); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+    z-index: 1000; 
+    opacity: 0.9; 
+}
+
+.navbar-brand a {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #fff; 
+    text-decoration: none;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 3rem;
+    font-weight: bold;
+}
+
+.navbar-links a {
+    color: #fff; 
+    font-size: 1.1rem;
+    text-decoration: none; 
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-links a:hover {
+    color: #000;
+}
+
+.navbar-links .active {
+    color: #000000;
+    font-weight: bold;
+}

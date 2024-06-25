@@ -1,0 +1,38 @@
+
+
+
+.Homemain {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 3fr 0fr;
+  }
+.images{
+    background-image: url('../img/pexels-lum3n-44775-568370.jpg');
+    background-size: cover;         
+    background-position: center;    
+    background-repeat: no-repeat; 
+    display: grid;
+    align-items: end;
+    justify-items: center;
+}
+
+.box-info{
+    background: rgba(255, 248, 240, 0.9); 
+    font-family: fantasy;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    width:250px;
+    padding: 10px 10px 10px 10px;
+    height: 200px;
+    text-align: center;
+
+}
+.information{
+    position: absolute;
+    gap: 70px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    
+}
