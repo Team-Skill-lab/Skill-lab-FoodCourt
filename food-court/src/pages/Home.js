@@ -1,25 +1,31 @@
 // src/pages/Home.js
 import React from 'react';
 import './Home.css'
+import { NavLink } from 'react-router-dom';
+import palavu from '../img/tawa-pulao-pulav-popular-street-food-mumbai-india-tawa-pulao-pulav-pilaf-pilau-indian-street-food-made-using-159850097.webp'
+import biryani from '../img/hyderbadi-biriyani-1.jpg'
+import idli from '../img/R (1).jpeg'
+import dose from '../img/Masala-Dosa.jpg'
 const Home = () => {
   return (<>
-    <div className="Homemain">
-        <div className="images"> 
-            <div className='information'>
-            <div className="box-info">
-            <h2>Best Food</h2>
-            <p>This is not the best but the worst than the best.</p></div>
-            <div className="box-info"><h2>Fresh Ingredients</h2>
-            <p>We use only the freshest ingredients to prepare our meals.</p></div>
-            <div className="box-info"><h2>Variety of Choices</h2>
-            <p>Explore a wide range of delicious options to satisfy your cravings.</p></div>
-            </div>
-       </div>
-        
-           
+  <div className='main'>
+    <div className='Info'>
+      <p className='infotext'>
+        Food<br/>
+        For<br/>
+        Thought
+
+      </p>
+      <p className='Under-Text'>Best Quality Food </p> 
+      
+      
+      <NavLink to="/menu" className='buttons'activeClassName="active">Menu</NavLink>
+         </div>
+    <div className='Img'>
+     
     </div>
-  
-  
+
+  </div>
   </>)
 };
 

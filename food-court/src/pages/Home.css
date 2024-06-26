@@ -1,15 +1,76 @@
 
+.main{
+    
+    width: 100vw;
+    height: 100vh;
+    padding-top: 80px; 
+    color: rgb(255, 246, 246);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+}
+.main::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
 
+    background-image: url('../img/pexels-lum3n-44775-568370.jpg');
+    
+    background-size: cover;         
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(50%); /* Adjust the brightness value as needed */
+    z-index: 1;}
+.Info{
+    z-index: 25;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+}
+.infotext{
+    font-size: 4rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bolder;
+}
+.Under-Text{
+    font-size: 1.5rem; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
 
+}
+.buttons{
+    width: 150px;
+    height: 40px;
+    background-color:  rgb(255, 179, 0);;
+    border: 1px black solid;
+    color: black;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-decoration: none;
+    transition: border-radius 0.3s ease-in-out ;
+}
+.buttons:hover{
+    background-color: rgb(255, 179, 0);
+    border-radius: 20px 75px;
+
+}
 .Homemain {
     height: 100vh;
-    display: grid;
-    grid-template-rows: 3fr 0fr;
+    display: flex;
+    flex-direction: column;
   }
 .images{
     background-image: url('../img/pexels-lum3n-44775-568370.jpg');
     background-size: cover;         
-    background-position: center;    
+    background-position: center;
+    height: 75%;    
     background-repeat: no-repeat; 
     display: grid;
     align-items: end;
@@ -19,19 +80,24 @@
 .box-info{
     background: rgba(255, 248, 240, 0.9); 
     font-family: fantasy;
+    
     border: 1px solid #000000;
-    border-radius: 10px;
+    border-radius:250px 250px;
     width:250px;
-    padding: 10px 10px 10px 10px;
+    overflow: hidden;
     height: 200px;
-    text-align: center;
-
+   
+    
 }
-.information{
-    position: absolute;
-    gap: 70px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+.information,.newinfo{
+    display: flex ;
+  flex-direction : row;
+  gap :20px;
+  position: relative;
+  bottom: 60px;
+    font-size: 20px;
+
+   
     align-items: center;
     justify-content: center;
     

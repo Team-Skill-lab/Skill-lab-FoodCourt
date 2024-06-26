@@ -1,51 +1,47 @@
-.Main-Div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.navbar {
+.Main-Div{
+    z-index: 100;
     position: fixed;
-    top: 25px;
+    border-bottom: 1px white solid;
+    width: 100%;
+    height: 80px;
     display: flex;
-    width: 1000px;
-    justify-content: space-between;
     align-items: center;
-    padding: 1rem;
-    border-radius: 25px;
-    background: rgba(255, 255, 255, 0.2); 
-    backdrop-filter: blur(10px); 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-    border: 1px solid rgba(255, 255, 255, 0.3); 
-    z-index: 1000; 
-    opacity: 0.9; 
+    justify-content: center;
 }
-
-.navbar-brand a {
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: #fff; 
+.navbar{
+    
+    width: 80%;
+    height: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+   align-items: center;
+   justify-content: center;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   font-weight: bolder;
+   font-size: 20px;
+   padding-left: 50px;
+}
+.navbar-brand a{
+    font-size: xx-large;
     text-decoration: none;
 }
-
-.navbar-links {
+.navbar-links{
     display: flex;
-    gap: 3rem;
-    font-weight: bold;
+    flex-direction: row;
+    justify-content: space-around;
+    transition: 1.1ms ;
 }
-
-.navbar-links a {
-    color: #fff; 
-    font-size: 1.1rem;
-    text-decoration: none; 
+.navbar-links a ,.navbar-brand a{
+    color: white;
+    text-decoration: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight:  900;
     transition: color 0.3s ease-in-out;
-}
 
-.navbar-links a:hover {
-    color: #000;
 }
-
-.navbar-links .active {
-    color: #000000;
-    font-weight: bold;
+.navbar-brand a:hover , .navbar-links a:hover{
+    color: rgb(255, 179, 0);
+}
+.navbar-links .active{
+    color: rgb(255, 179, 0);
 }
