@@ -1,36 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import './Menu.css';
+
 const imagePaths = {
-  "dosa": require('../Images/Dose.jpeg'),
-  miniMeal: '/images/f1.jpeg',
-  pulav: '/images/pulav.jpeg',
-  lemonRice: '/images/lemon_rice.jpeg',
-  chapathi: '/images/chapathi.jpeg',
-  gobi: '/images/gobi.jpeg',
-  idli: '/images/idli.jpeg',
-  masalaDosa: '/images/masala_dosa.jpeg',
-  chickenKebab: '/images/chicken_kebab.jpeg',
-  chickenSukka: '/images/chicken_sukka.jpeg',
-  chickenPulimunchi: '/images/chicken_pulimunchi.jpeg',
-  chickenRice: '/images/chicken_rice.jpeg',
-  chickenPepper: '/images/chicken_pepper.jpeg',
-  chickenBiryani: '/images/chicken_biryani.jpeg',
-  vegPuffs: '/images/veg_puffs.jpeg',
-  samosa: '/images/samosa.jpeg',
-  oreoShake: '/images/oreo_shake.jpeg',
-  watermelonJuice: '/images/watermelon_juice.jpg',
-  muskmelonJuice: '/images/muskmelon_juice.jpeg',
-  chippadJuice: '/images/chippad_juice.jpeg',
-  masalaPuri: '/images/masala_puri.jpeg',
-  sevPuri: '/images/sev_puri.jpeg',
-  dahiPuri: '/images/dahi_puri.jpeg',
-  paniPuri: '/images/pani_puri.jpeg',
-  foodCourt: '/images/food_court.png',
+  Dosa: 'https://t3.ftcdn.net/jpg/00/37/81/84/360_F_37818424_iEAeI3ngDZ3pNwQ8iZvm2AIDzVDRQmhz.jpg',
+  MiniMeal: 'https://yazhli.com/wp-content/uploads/2019/11/images-3-1.jpg',
+  pulav: 'https://img.freepik.com/free-photo/veg-biryani-veg-pulav-fried-rice-indian-food-generative-ai_1258-151587.jpg?size=626&ext=jpg&ga=GA1.1.1788614524.1719446400&semt=sph',
+  lemonRice: 'https://www.cookwithmanali.com/wp-content/uploads/2016/01/South-Indian-Lemon-Rice-Recipe.jpg',
+  chapathi: 'https://img.freepik.com/premium-photo/chapathi-with-vegetable-curry_931559-307.jpg?w=900',
+  gobi: 'https://as2.ftcdn.net/v2/jpg/07/71/26/89/1000_F_771268905_A9ub62Ny5XPJzIgcxztnfznEK3B7KkGZ.jpg',
+  idli: 'https://img.freepik.com/premium-photo/idly-sambar-idli-with-sambhar-green-red-chutney-popular-south-indian-breakfast_999766-2544.jpg?w=900',
+  masalaDosa: 'https://t3.ftcdn.net/jpg/07/21/67/66/240_F_721676699_iDZye5CUAhVJIG2sJSbeT4qGXfUZkmx0.jpg',
+  chickenKebab: 'https://as2.ftcdn.net/v2/jpg/03/13/35/73/1000_F_313357375_eI3nubCLdKLGOIbgNU6oDurVWg0u7j4b.jpg',
+  chickenSukka: 'https://sp-ao.shortpixel.ai/client/to_auto,q_lossless,ret_img,w_735/https://www.thetakeiteasychef.com/wp-content/uploads/2016/07/CS-Featured.jpg',
+  chickenPulimunchi: 'https://ts2.mm.bing.net/th?q=chicken-pulimunchi-the-take-it-easy-chef.webp',
+  chickenRice: 'https://nishkitchen.com/wp-content/uploads/2017/08/indian-lemon-chicken-and-rice-2B.jpg',
+  chickenPepper: 'https://www.recipehub.in/wp-content/uploads/2021/06/pepper-chicken2website.jpg',
+  chickenBiryani: 'https://saihomefood.in/cdn/shop/products/n7_1000x1000_crop_center.jpg?v=1572348312',
+  vegPuffs: 'https://carveyourcraving.com/wp-content/uploads/2021/11/veg-puff-recipe-968x1200.jpg',
+  samosa: 'https://www.spiceupthecurry.com/wp-content/uploads/2016/10/Samosa-recipe-1-1-1024x1536.jpg',
+  oreoShake: 'https://t3.ftcdn.net/jpg/08/02/02/04/240_F_802020443_030QEvt9a3llsj7x6YBeNMXYcQiYnYwB.jpg',
+  watermelonJuice: 'https://moonrice.net/wp-content/uploads/2023/07/WatermelonDrink-3-768x768.jpg',
+  muskmelonJuice: 'https://5.imimg.com/data5/DT/PV/MY-28707171/magic-musk-melon-juice-1000x1000.png',
+  chippadJuice: 'https://www.archanaskitchen.com/images/archanaskitchen/World_Beverages/Muskmelon_Kharbuj_Juice_Recipe-1.jpg',
+  masalaPuri: 'https://b2958125.smushcdn.com/2958125/wp-content/uploads/masala-poori-homemade-chaat-street-side-recipe-e.jpg?lossy=1&strip=1&webp=1',
+  sevPuri: 'https://as1.ftcdn.net/v2/jpg/08/20/38/24/1000_F_820382404_mpGKfhxgNVeWrOFsIDOu76qx7DMcsyX1.jpg',
+  dahiPuri: 'https://media.istockphoto.com/id/1314802039/photo/forehead-castle-chat.jpg?s=612x612&w=is&k=20&c=169ddUWsudZO3mSpe8DSZ3tv2SWCrxxiEUBpv0-ofk0=',
+  paniPuri: 'https://media.istockphoto.com/id/525416827/photo/pani-puri-golgappe-chat-item-india.jpg?s=612x612&w=is&k=20&c=7uwMbkrH4vJL5a-PkpOsvXApbU3THY5REMS2WAhBOq0=',
+  foodCourt: 'https://example.com/images/food_court.png',
 };
+
 const foodData = {
   veg: [
-    { name: 'Dosa', price: '40.00', image: 'dosa' },
-    { name: 'Mini meal', price: '50.00', image: 'miniMeal' },
+    { name: 'Dosa', price: '40.00', image: 'Dosa' },
+    { name: 'Mini meal', price: '50.00', image: 'MiniMeal' },
     { name: 'Pulav', price: '40.00', image: 'pulav' },
     { name: 'Lemon rice', price: '45.00', image: 'lemonRice' },
     { name: 'Chapathi', price: '45.00', image: 'chapathi' },
@@ -61,9 +63,8 @@ const foodData = {
     { name: 'Sev puri', price: '50.00', image: 'sevPuri' },
     { name: 'dhahi puri', price: '50.00', image: 'dahiPuri' },
     { name: 'Pani puri', price: '50.00', image: 'paniPuri' },
-  ]
+  ],
 };
-
 
 const FoodMenu = () => {
   const [cardsToShow, setCardsToShow] = useState([]);
@@ -74,7 +75,7 @@ const FoodMenu = () => {
       ...foodData.nonveg,
       ...foodData.snacks,
       ...foodData.juice,
-      ...foodData.chats
+      ...foodData.chats,
     ];
     setCardsToShow(allItems);
   };
@@ -94,14 +95,14 @@ const FoodMenu = () => {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     const searchTerm = e.target.search.value.toLowerCase();
-    const filteredItems = cardsToShow.filter(item =>
+    const filteredItems = cardsToShow.filter((item) =>
       item.name.toLowerCase().includes(searchTerm)
     );
     setCardsToShow(filteredItems);
   };
 
   return (
-    <div> 
+    <div>
       <img src={imagePaths.foodCourt} alt="bg" className="background-image" />
       <header className="header">
         <nav className="navbar">
@@ -109,11 +110,21 @@ const FoodMenu = () => {
             <h1 className="brand-text">Food Court</h1>
           </div>
           <form className="search-form" onSubmit={handleSearchSubmit}>
-            <input type="text" className="search-input" name="search" placeholder="Search for food..." />
-            <button type="submit" className="search-button">Search</button>
+            <input
+              type="text"
+              className="search-input"
+              name="search"
+              placeholder="Search for food..."
+            />
+            <button type="submit" className="search-button">
+              Search
+            </button>
           </form>
           <div className="filter">
-            <select className="filter-select" onChange={(e) => displayCards(e.target.value)}>
+            <select
+              className="filter-select"
+              onChange={(e) => displayCards(e.target.value)}
+            >
               <option value="all">All</option>
               <option value="veg">Vegetarian</option>
               <option value="nonveg">Non-Vegetarian</option>
@@ -129,7 +140,13 @@ const FoodMenu = () => {
       <div className="cards-container">
         {cardsToShow.map((item, index) => (
           <div key={index} className="card">
-            <img src={imagePaths[item.image]} alt={item.name} className="card-image" />
+            <img
+              src={imagePaths[item.image]}
+              alt={item.name}
+              className="card-image"
+              width={75}
+              height={75}
+            />
             <h2 className="card-title">{item.name}</h2>
             <p className="card-price">💰{item.price}</p>
           </div>
