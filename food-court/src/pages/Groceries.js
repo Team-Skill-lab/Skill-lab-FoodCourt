@@ -32,18 +32,21 @@ export default () => {
  
       {List.map((items , index )=>{
         return(
-          <div className="Groceries" key={index} style={{backgroundColor:items.DeliverStatus}}>
+          <div className="Groceries" key={index} style={{backgroundColor:"white"}}>
             <h1>Items name :{items.name}</h1>
             <h1>Items price :{items.price}₹</h1>
             <h1>Items quantity : {items.quantity}</h1>
+           
             <h1>Total Price : {items.price*items.quantity}</h1>
+            
+            
             {
               items.DeliverStatus === 'green' ? <h1>Delivered</h1> : items.DeliverStatus==='red'? <h1>Not Delivered</h1> :<button className="buttoms">Track Order</button>
 
             }
 
 
-            <button className="buttons" onClick={()=>{setnewObject([...newObject,{id:items.id,name:items.name,price:items.price,quantity:items.quantity}])}}>View</button>
+            <button style={{backgroundColor:items.DeliverStatus}} className="buttons" onClick={()=>{setnewObject([...newObject,{id:items.id,name:items.name,price:items.price,quantity:items.quantity}])}}>View</button>
           </div>
       )})}
     </div>

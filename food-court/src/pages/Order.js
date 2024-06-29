@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Counter from '../components/Counter'; // Assuming Counter component is correctly imported
 import '../css/Order.css';
+import { Link } from 'react-router-dom';
+import { NavLink } from 'react-bootstrap';
+import '../css/Home.css';
 const Order = () => {
   const [orders, setOrders] = useState([
     { id: 1, Name: "palavu", ifavailable: true, count: 6 },
@@ -37,7 +40,7 @@ const Order = () => {
         ))}
         <div className='div-cost'>
           <p className='p-cost'>Total count: {total}</p>
-          <button className='button-cost'>Check out</button>
+          <Link className="buttons-Home" to="/Feedback"> Check out </Link>
         </div>
       </div>
     </div>

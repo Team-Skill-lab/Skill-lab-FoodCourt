@@ -10,6 +10,7 @@ import Admin from './pages/Admin';
 import Login from './pages/Login'
 import Items from './pages/Items'
 import Groceries from './pages/Groceries';
+import Feedback from '../src/pages/FeedBack';
 const App = () => {
   return (
     <Router>
@@ -26,6 +27,7 @@ const App = () => {
         <Route path='*' element={<h3>Hello</h3>}/>
         <Route path="/admin" element={<Admin />} />
         <Route path="/About" element={<Admin />} />
+        <Route path='/Feedback' element={<Feedback/>}/>
       </Routes>
     </Router>
   );

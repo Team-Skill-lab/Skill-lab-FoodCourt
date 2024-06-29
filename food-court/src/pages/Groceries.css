@@ -20,8 +20,12 @@
     justify-content: space-between;
     border-style: ridge;
     font-style: oblique;
-    
+    transition: all 0.2s ease-in;
 }
 .Groceries h1{
     font-size: 20px;
+}
+.Groceries:hover{
+    transform: scale(1.02);
+    border: 2px black solid ;
 }
