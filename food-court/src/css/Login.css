@@ -8,10 +8,9 @@
 
 .login-container, .signup-container {
     padding-top: 30px;
-    
     align-items: center;
     justify-items: center;
-    background-color: white;
+    background-color: rgb(28, 28, 28);
     width: 450px;
     text-align: center;
 }
@@ -19,12 +18,16 @@
 .login-container h2, .signup-container h2 {
     margin-bottom: 30px;
     font-size: 24px;
-    color: #333;
+    color:white;
+}
+.login-container p, .signup-container p {
+    color: #ffffff;
 }
 
 .input-group {
     margin-bottom: 20px;
     position: relative;
+    margin-left: 20px;
 }
 
 .input-group input {
@@ -33,10 +36,11 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
+ 
 }
 
 .input-group input::placeholder {
-    color: #aaa;
+    color:black;
 }
 
 .forgot-password {
@@ -51,10 +55,10 @@
 }
 
 .login-btn, .signup-btn {
-    width: 100%;
+    width: 50%;
     padding: 15px;
     margin-left: 15px;
-    background: linear-gradient(to right,  #1196cb,  #2575fc);
+    background: linear-gradient(to right,  rgb(255,179,0),  rgb(255,179,0));
     color: #ffffff;
     border: none;
     border-radius: 25px;
@@ -64,7 +68,7 @@
 }
 
 .login-btn:hover, .signup-btn:hover {
-    background: linear-gradient(to right,  #2575fc, #1181cb);
+    background:linear-gradient(to right,  rgb(255,179,0),  rgb(255,179,0));
 }
 
 .social-login, .social-signup {
@@ -75,7 +79,7 @@
 .social-login p, .social-signup p {
     margin-bottom: 10px;
     font-size: 14px;
-    color: #333;
+    color:white;
 }
 
 .social-icons {
@@ -91,14 +95,13 @@
 
 
 .container {
-    background-color: #ffffff;
+    background-color: rgb(28, 28, 28); 
     padding: 40px 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 550px;
-   padding-top: 0;
+    padding-top: 0;
     text-align: center;
-    
     padding-right: 65px;
 }
 
@@ -107,16 +110,17 @@
     justify-content: space-between;
     width: 100%;
     margin-bottom: 20px;
+    color: #ffffff;
 }
 
 .role-switch label {
-    font-size: 14px;
+    font-size: 20px;
 }
 
 .login-container h2 {
     margin-bottom: 30px;
     font-size: 24px;
-    color: #333;
+    color:white;
     
 }
 
@@ -134,7 +138,8 @@
 }
 
 .input-group input::placeholder {
-    color: #aaa;
+    color: #393838;
+    margin: 1px;
 }
 
 .forgot-password {
@@ -149,9 +154,9 @@
 }
 
 .login-btn {
-    width: 100%;
+    width: 50%;
     padding: 15px;
-    background: linear-gradient(to right, #1196cb, #2575fc);
+    background:linear-gradient(to right,  rgb(255,179,0),  rgb(255,179,0));
     color: #ffffff;
     border: none;
     border-radius: 25px;
@@ -162,7 +167,7 @@
 }
 
 .login-btn:hover {
-    background: linear-gradient(to right, #2575fc, #1181cb);
+    background:linear-gradient(to right,  rgb(255,179,0),  rgb(255,179,0));
 }
 
 .social-login {
@@ -173,7 +178,7 @@
 .social-login p {
     margin-bottom: 10px;
     font-size: 14px;
-    color: #333;
+    color: white;
 }
 
 .social-icons {
