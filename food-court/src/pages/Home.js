@@ -1,6 +1,6 @@
 // src/pages/Home.js
 import React from 'react';
-import './Home.css';
+import '../css/Home.css';
 import { NavLink } from 'react-router-dom';
 
 import chef from '../img/main.png'

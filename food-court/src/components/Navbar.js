@@ -1,7 +1,7 @@
 // src/components/Navbar.js
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './NavBar.css'; 
+import '../css/NavBar.css';
 import logo  from '../img/sahyadri-college-of-enggineering-and-management-logo-108.jpg'
 const Navbar = () => {
   return (

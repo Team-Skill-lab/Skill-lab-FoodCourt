@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Admin.css';
+import '../css/Admin.css';
 
 const Items_List = [
   { Name: "User", Link: "/admin/user" },

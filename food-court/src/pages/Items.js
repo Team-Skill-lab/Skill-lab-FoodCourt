@@ -1,7 +1,7 @@
 //Items.js
 import React from 'react';
-import './Items.css'
-import './SearchBar.css'
+import '../css/Items.css';
+import '../css/SearchBar.css';
 import SearchBar from './SearchBar'; 
 import { useState } from 'react';
 import ToggleSwitch from '../components/ToggleSwitch';
