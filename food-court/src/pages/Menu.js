@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Menu.css';
 const imagePaths = {
-  "dosa": require('../Images/Dose.jpeg'),
+  dosa: '../Images/Dose.jpeg',
   miniMeal: '/images/f1.jpeg',
   pulav: '/images/pulav.jpeg',
   lemonRice: '/images/lemon_rice.jpeg',
@@ -27,6 +27,7 @@ const imagePaths = {
   paniPuri: '/images/pani_puri.jpeg',
   foodCourt: '/images/food_court.png',
 };
+
 const foodData = {
   veg: [
     { name: 'Dosa', price: '40.00', image: 'dosa' },
@@ -63,7 +64,6 @@ const foodData = {
     { name: 'Pani puri', price: '50.00', image: 'paniPuri' },
   ]
 };
-
 
 const FoodMenu = () => {
   const [cardsToShow, setCardsToShow] = useState([]);
@@ -132,6 +132,9 @@ const FoodMenu = () => {
             <img src={imagePaths[item.image]} alt={item.name} className="card-image" />
             <h2 className="card-title">{item.name}</h2>
             <p className="card-price">💰{item.price}</p>
+            <button onClick={()=>{
+              console.log(item.name)
+            }}>Buy</button>
           </div>
         ))}
       </div>

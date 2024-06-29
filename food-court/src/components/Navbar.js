@@ -11,11 +11,11 @@ const Navbar = () => {
         <NavLink to="/"><img src={logo} alt='Logo'></img>Food court</NavLink>
       </div>
       <div className="navbar-links">
-        <NavLink to="/" exact activeClassName="active">Home</NavLink>
-        <NavLink to="/menu" activeClassName="active">Menu</NavLink>
-        <NavLink to="/Orders" activeClassName="active">Orders</NavLink>
+        <NavLink className="Home" to="/" exact activeClassName="active">Home</NavLink>
+        <NavLink  className="Menu" to="/menu" activeClassName="active">Menu</NavLink>
+        <NavLink className="Orders" to="/Orders" activeClassName="active">Orders</NavLink>
        
-        <NavLink to="/Authentication" activeClassName="active">Login/SignUp</NavLink>
+        <NavLink className="Login" to="/Authentication" activeClassName="active">Login/SignUp</NavLink>
       
       </div>
     </nav></div>
