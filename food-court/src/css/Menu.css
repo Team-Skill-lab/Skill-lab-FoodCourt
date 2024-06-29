@@ -96,8 +96,9 @@ body {
 .cards-container {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap: wrap;
+
   margin-top: 100px;
   padding: 20px;
 }
@@ -110,16 +111,20 @@ body {
   padding: 20px;
   color: white;
   width: 200px;
+  height: 300px;
   text-align: center;
 }
 
-.card-image {
+.img-card-main{
+
+  overflow: hidden;
   width: 100%;
-  height: auto;
-  border-radius: 10px 10px 0 0;
+  height: 200px;
+  object-fit: fill;
 }
 
 .card-title {
+
   font-size: 18px;
   margin: 10px 0;
 }
