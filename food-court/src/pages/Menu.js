@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './Menu.css';
+import '../css/Menu.css';
 const imagePaths = {
-  "dosa": require('../Images/Dose.jpeg'),
+  dosa: '../Images/Dose.jpeg',
   miniMeal: '/images/f1.jpeg',
   pulav: '/images/pulav.jpeg',
   lemonRice: '/images/lemon_rice.jpeg',
