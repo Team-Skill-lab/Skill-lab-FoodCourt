@@ -1,0 +1,54 @@
+.Main-admin {
+    padding-top: 80px;
+    background-image: url("../img/food_courtediyt.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; 
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 1200px) {
+    .Main-admin {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .Main-admin {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .Main-admin {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+.cards-admin{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+   
+}
+.cards-admin button{
+    opacity: 0.8;
+    width: 200px;
+    height: 100px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    font-size: larger;
+    border: none;
+    border-radius: 10px;
+    border: 2px rgb(255,179,0) solid;
+
+}

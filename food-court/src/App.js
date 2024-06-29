@@ -5,7 +5,11 @@ import CustomNavbar from './components/Navbar';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
 import About from './pages/About';
-
+import Order from './pages/Order';
+import Admin from './pages/Admin';
+import Login from './pages/Login'
+import Items from './pages/Items'
+import Groceries from './pages/Groceries';
 const App = () => {
   return (
     <Router>
@@ -13,9 +17,15 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/menu" element={<Menu />} />
-        <Route path="/about" element={<About />} />
-        <Route path='/Authentication' element={<About/>}/>
-        <Route path='*' element={<h1>Error</h1>}/>
+        
+        <Route path="/Orders" element={<Order />} />
+        <Route path='/Authentication' element={<Login/>}/>
+        <Route path='/User' element={<About/>}/>
+        <Route path='/admin/products' element={<Items/>}/>
+        <Route path='/admin/groceries' element={<Groceries/>}/>
+        <Route path='*' element={<h3>Hello</h3>}/>
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/About" element={<Admin />} />
       </Routes>
     </Router>
   );

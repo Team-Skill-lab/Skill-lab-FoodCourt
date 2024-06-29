@@ -1,0 +1,205 @@
+.Login_signup{
+    padding-top: 100px;
+    background-image: url('../img/food_courtediyt.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.login-container, .signup-container {
+    padding-top: 30px;
+    
+    align-items: center;
+    justify-items: center;
+    background-color: white;
+    width: 450px;
+    text-align: center;
+}
+
+.login-container h2, .signup-container h2 {
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: #333;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.input-group input::placeholder {
+    color: #aaa;
+}
+
+.forgot-password {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.forgot-password a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 14px;
+}
+
+.login-btn, .signup-btn {
+    width: 100%;
+    padding: 15px;
+    margin-left: 15px;
+    background: linear-gradient(to right,  #1196cb,  #2575fc);
+    color: #ffffff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.login-btn:hover, .signup-btn:hover {
+    background: linear-gradient(to right,  #2575fc, #1181cb);
+}
+
+.social-login, .social-signup {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.social-login p, .social-signup p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.social-icons a img {
+    width: 40px;
+    height: 40px;
+}
+
+
+.container {
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 550px;
+   padding-top: 0;
+    text-align: center;
+    
+    padding-right: 65px;
+}
+
+.role-switch {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.role-switch label {
+    font-size: 14px;
+}
+
+.login-container h2 {
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: #333;
+    
+}
+
+.input-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.input-group input::placeholder {
+    color: #aaa;
+}
+
+.forgot-password {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.forgot-password a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 14px;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to right, #1196cb, #2575fc);
+    color: #ffffff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+    margin-left: 20px;
+}
+
+.login-btn:hover {
+    background: linear-gradient(to right, #2575fc, #1181cb);
+}
+
+.social-login {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.social-login p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.social-icons a img {
+    width: 40px;
+    height: 40px;
+}
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+  
+
+
+
