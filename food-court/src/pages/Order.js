@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Counter from '../components/Counter'; // Assuming Counter component is correctly imported
-import './Order.css';
-
+import '../css/Order.css';
 const Order = () => {
   const [orders, setOrders] = useState([
     { id: 1, Name: "palavu", ifavailable: true, count: 6 },

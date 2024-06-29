@@ -1,6 +1,6 @@
 // src/ToggleSwitch.js
 import React, { useState } from 'react';
-import './ToggleSwitch.css';
+import '../css/ToggleSwitch.css';
 
 const ToggleSwitch = () => {
   const [isOn, setIsOn] = useState(false);
