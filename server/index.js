@@ -1,25 +1,34 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const route = require('./route/route');
-const PORT = 2500;
+const express = require("express");
+const Menus = require('./route/Menus'); 
+const Users = require('./route/Users');
+const Orders = require('./route/Orders'); 
 const app = express();
+const PORT = process.env.PORT || 8080;
+const mongoose = require('mongoose');
+const cors = require('cors');
 
-app.use(express.json());
+require('dotenv').config();
+const mongoURL = process.env.MONGO_URI;
 
-mongoose.connect("mongodb://localhost:27017/Users", {
+app.use(cors());
+// Connect to MongoDB
+mongoose.connect(mongoURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
-.then(() => {
-    console.log("Database Connected!!");
-})
-.catch((err) => {
-    console.log(err.message);
-});
+.then(() => console.log('Connected to MongoDB...'))
+.catch(err => console.log(err.message));
 
-app.use('/', route);
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
+// Use routes
+app.use('/api/menus', Menus); 
+app.use('/api/users', Users); 
+app.use('/api/orders', Orders);
+
+// Start server
 app.listen(PORT, () => {
-    console.log(`Server running at Port: ${PORT}`);
+    console.log("Server is running on port " + PORT);
 });
-

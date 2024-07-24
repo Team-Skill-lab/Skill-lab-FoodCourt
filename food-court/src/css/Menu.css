@@ -149,3 +149,12 @@ body {
     margin-top: 150px;
   }
 }
+.Img-menu-all{
+  width: 100%;
+  align-self: center;
+  scale: 5;
+  position: relative;
+  top: 80px;
+
+
+}

@@ -1,0 +1,100 @@
+
+.Main-Container{
+  z-index: 100;
+  background-image: url('../img/food_courtediyt.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}.Main-Container {
+  padding-top: 80px;
+  background-color: #000000;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bd-Paper {
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background-color: #000000;
+  padding: 2rem;
+}
+
+.text-primary {
+  color: rgb(255,179,5) !important;
+}
+
+.has-icon .form-control {
+  padding-right: 2.5rem;
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.dense .form-control {
+  padding: 0.75rem 1.25rem;
+  border: 2px solid #ffffff;
+  border-radius: 4px;
+}
+
+.dense .form-select {
+  padding: 0.75rem 1.25rem;
+  border: 2px solid #ffffff;
+  border-radius: 4px;
+}
+
+.bd-Button {
+  background-color: #ffc107;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  font-size: 1.25rem;
+  transition: background-color 0.3s ease;
+}
+
+.bd-Button:hover {
+  background-color: #e0a800;
+}
+
+.form-label {
+  font-weight: 500;
+  color: #495057;
+}
+
+.mb-3 {
+  margin-bottom: 1rem !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-primary h3 {
+  color: inherit;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #6c757d;
+}
+
+::placeholder {
+  color: #6c757d;
+}
+
+.form-control:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-select:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+.formAll{
+  text-decoration: none;
+  color: rgb(255,179,0);
+}

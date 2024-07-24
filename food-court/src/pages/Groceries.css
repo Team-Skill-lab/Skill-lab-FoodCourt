@@ -9,7 +9,9 @@
     flex-wrap: wrap;
     height: 100vh;
     gap: 30px;
+    
     padding: 80px 50px 50px 50px ;
+    padding-top: 100px
 }
 .Groceries{
     border-radius: 35px;

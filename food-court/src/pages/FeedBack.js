@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Col, FloatingLabel, Form, Row } from "react-bootstrap";
 import * as bd from "react-basic-design";
 import { FaEnvelope, FaUserCircle } from "react-icons/fa";
+import '../css/Feedback.css';
 
 export default function Feedback() {
   const [rtl, setRTL] = useState(bd.helper.getRTL());
@@ -18,15 +19,12 @@ export default function Feedback() {
   }
 
   return (
-    <div className="Main-Container" style={{paddingTop:80}}>
-      <bd.Paper className="p-3 my-3 mx-auto" style={{ maxWidth: 600 }}>
-        <Form autoComplete="off" className="">
+    <div className="Main-Container">
+      <bd.Paper className="bd-Paper">
+        <Form autoComplete="off">
           <div className="text-primary text-center mb-4">
             <FaEnvelope style={{ fontSize: 50 }} />
-            <h3 className="mt-3">Food Court Feedback Form</h3>
-           
-
-          
+            <h3 className="mt-3  formAll" >Food Court Feedback Form</h3>
           </div>
 
           <FloatingLabel label="Email address" className="dense has-icon mb-3">
@@ -76,7 +74,7 @@ export default function Feedback() {
             color="yellow"
             size="lg"
             type="button"
-            className="d-block m-auto w-100"
+            className="bd-Button d-block m-auto w-100"
           >
             SEND MESSAGE
           </bd.Button>

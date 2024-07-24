@@ -1,19 +1,19 @@
 import { useState } from "react"
 import './Groceries.css'
 const List =[{
-    id: 1,
-    name: "Rice",
-    price: 100,
-    quantity: 1,
-    DeliverStatus : 'green'
-},
-{
     id: 2,
     name: "Wheat",
     price: 200,
     quantity: 2,
     DeliverStatus : 'yellow'
 },{
+    id: 1,
+    name: "Rice",
+    price: 100,
+    quantity: 1,
+    DeliverStatus : 'green'
+},
+,{
   id: 3,
   name: "Oil",
   price: 100,
@@ -41,7 +41,7 @@ export default () => {
             
             
             {
-              items.DeliverStatus === 'green' ? <h1>Delivered</h1> : items.DeliverStatus==='red'? <h1>Not Delivered</h1> :<button className="buttoms">Track Order</button>
+              items.DeliverStatus === 'green' ? <h1>Delivered</h1> : items.DeliverStatus==='red'? <h1>Order Cancelled</h1> :<button className="buttoms">Track Order</button>
 
             }
 

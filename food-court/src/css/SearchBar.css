@@ -11,3 +11,18 @@ input {
     
     margin-right: 10px;
   }
+.Main-Items{
+    background-image: url('../img/food_courtediyt.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+}
+.card{
+    width: 200px;
+    color: white;
+}
+.card img{
+    height: 100px;
+}

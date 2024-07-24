@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../css/Menu.css';
-
+import logo from '../img/menu125.png'
 const imagePaths = {
   Dosa: 'https://t3.ftcdn.net/jpg/00/37/81/84/360_F_37818424_iEAeI3ngDZ3pNwQ8iZvm2AIDzVDRQmhz.jpg',
   MiniMeal: 'https://yazhli.com/wp-content/uploads/2019/11/images-3-1.jpg',
@@ -136,7 +136,7 @@ const FoodMenu = () => {
           </div>
         </nav>
       </header>
-
+<img className='Img-menu-all' src={logo} />
       <div className="cards-container">
         {cardsToShow.map((item, index) => (
           <div key={index} className="card">
