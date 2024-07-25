@@ -1,45 +1,94 @@
-import { useState } from "react"
-import './Groceries.css'
-const List =[{
-    id: 1,
-    name: "Palvu",
-    usn: "ODR057",
-    orderStauts : true,
-},
-{
-    id: 2,
-    name: "Puvith",
-    usn: "ODR058",
-    orderStauts : false,
-},{
-    id: 3,
-    name: "Divya shree ",
-    usn: "ODR032",
-    orderStauts : true,
-}
+import React, { useState, useEffect } from 'react';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import axios from 'axios';
+import { Container, Row, Col, Table } from 'react-bootstrap';
 
-]
+const OrderList = () => {
+  const [isOn, setIsOn] = useState(true);
+  const handleToggle = () => setIsOn(!isOn);
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/api/orders');
+        setItems(response.data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-export default () => {
-  const [newObject ,setnewObject] = useState(List)
-  return (<>
-    <div className="main-Groceries">
- 
-      {List.map((items , index )=>{
-        return(
-          <div className="Groceries" key={index} style={{backgroundColor:"white"}}>
-            <h1>Name :{items.name}</h1>
-            
-           
-            <h1>{items.usn}</h1>
-            
-            
+    fetchData();
+  }, []);
 
-            <button style={{backgroundColor:items.DeliverStatus}}  onClick={()=>{setnewObject([...newObject,{id:items.id,name:items.name,price:items.price,quantity:items.quantity}])}}>View</button>
-          </div>
-      )})}
-    </div>
-  </>)
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
-}
+  return (
+    <Container>
+      <Row>
+        {items.map((item) => (
+          <Col key={item._id} md={4} className="mb-4">
+            <Card style={{ width: '18rem', height: '100%' }}>
+              <Card.Body className="d-flex flex-column">
+                <Card.Title>{item.orderID}</Card.Title>
+                <Card.Text>{item.orderDate}</Card.Text>
+                <h5>User Name: {item.userId.name}</h5>
+                <Table>
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Order List</th>
+                      <th>Quantity</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {item.menuItems.map((itemOne, index) => (
+                      <tr key={itemOne._id}>
+                        <td>{index + 1}</td>
+                        <td>{itemOne.item ? itemOne.item.name : "NA"}</td>
+                        <td>{itemOne.quantity}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+                <div className="mt-auto">
+                  <Button
+                    className="mr-2 mb-2 "
+                    variant={
+                      item.orderStatus === 'Completed' ? 'success' :
+                      item.orderStatus === 'Pending' ? 'warning' :
+                      item.orderStatus === 'canceled' ? 'danger' :
+                      'secondary'
+                    }
+                    onClick={handleToggle}
+                  >
+                    {item.orderStatus === 'Completed' ? 'Completed' :
+                    item.orderStatus === 'Pending' ? 'Pending' :
+                    item.orderStatus === 'canceled' ? 'Cancelled' :
+                    'Unknown Status'}
+                  </Button>
+                  <Button
+                    className="ml mb-2"
+                    variant="outline-primary"
+                    onClick={handleToggle}
+                  >
+                    {item.orderStatus === 'Completed' ? 'Delete' :
+                    item.orderStatus === 'Pending' ? 'Cancel' : 'Delete'}
+                  </Button>
+                </div>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </Container>
+  );
+};
+
+export default OrderList;
