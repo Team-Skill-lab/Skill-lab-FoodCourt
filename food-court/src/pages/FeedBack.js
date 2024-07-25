@@ -1,85 +1,77 @@
-import React, { useState } from "react";
-import { Col, FloatingLabel, Form, Row } from "react-bootstrap";
-import * as bd from "react-basic-design";
-import { FaEnvelope, FaUserCircle } from "react-icons/fa";
-import '../css/Feedback.css';
+import React, { useState } from 'react';
+import axios from 'axios';
+import '../css/Feedback.css'; // Ensure correct path to your CSS file
 
-export default function Feedback() {
-  const [rtl, setRTL] = useState(bd.helper.getRTL());
-  const [darkMode, setDarkMode] = useState(bd.helper.isDarkMode());
+export default function FeedbackForm() {
+  const [formData, setFormData] = useState({
+    email: '',
+    feedback: '',
+    stars: '',
+    issues: ''
+  });
 
-  function changeRTL(value) {
-    setRTL(value);
-    bd.helper.setRTL(value);
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  function changeDarkMode(value) {
-    setDarkMode(value);
-    bd.helper.setTheme(value ? "mui-dark" : "mui-light");
-  }
+    try {
+      await axios.post('http://localhost:8080/api/feedback', formData);
+      alert('Feedback submitted successfully!Thank you 😊');
+      setFormData({
+        email: '',
+        feedback: '',
+        stars: '',
+        issues: ''
+      });
+    } catch (error) {
+      console.error('Error submitting feedback:', error);
+      alert('Failed to submit feedback. Please try again later.');
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   return (
     <div className="Main-Container">
-      <bd.Paper className="bd-Paper">
-        <Form autoComplete="off">
-          <div className="text-primary text-center mb-4">
-            <FaEnvelope style={{ fontSize: 50 }} />
-            <h3 className="mt-3  formAll" >Food Court Feedback Form</h3>
-          </div>
-
-          <FloatingLabel label="Email address" className="dense has-icon mb-3">
-            <Form.Control
-              name="email"
-              type="email"
-              placeholder="yourName@gmail.com"
-            />
-            <FaUserCircle className="position-absolute" style={{ right: 10, top: 10 }} />
-          </FloatingLabel>
-
-          <Row>
-            <Col md>
-              <FloatingLabel label="Full Name" className="dense mb-3">
-                <Form.Control
-                  name="fullName"
-                  type="text"
-                  placeholder="FullName"
-                  autoComplete="off"
-                />
-              </FloatingLabel>
-            </Col>
-
-            <Col md>
-              <FloatingLabel label="Type" className="dense mb-3">
-                <Form.Select name="type" placeholder="Type">
-                  <option>Food Quality</option>
-                  <option>Service Quality</option>
-                  <option>Cleanliness</option>
-                  <option>Ambiance</option>
-                  <option>Additional Comments and Suggestions</option>
-                </Form.Select>
-              </FloatingLabel>
-            </Col>
-          </Row>
-
-          <FloatingLabel label="Message" className="dense mb-3">
-            <Form.Control
-              as="textarea"
-              name="message"
-              placeholder="Message"
-              style={{ height: 100 }}
-            />
-          </FloatingLabel>
-
-          <bd.Button
-            color="yellow"
-            size="lg"
-            type="button"
-            className="bd-Button d-block m-auto w-100"
-          >
-            SEND MESSAGE
-          </bd.Button>
-        </Form>
-      </bd.Paper>
-    </div>
-  );
+      <div className="bd-Paper">
+        <h2>Feedback Form</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <textarea
+            name="feedback"
+            placeholder="Feedback"
+            value={formData.feedback}
+            onChange={handleChange}
+          ></textarea>
+          <input
+            type="number"
+            name="stars"
+            placeholder="Stars (1-5)"
+            value={formData.stars}
+            onChange={handleChange}
+            min="1"
+            max="5"
+            required
+          />
+          <input
+            type="text"
+            name="issues"
+            placeholder="Issues"
+            value={formData.issues}
+            onChange={handleChange}
+          />
+          <button type="submit">Submit Feedback</button>
+        </form>
+      </div>
+    </div>
+  );
 }

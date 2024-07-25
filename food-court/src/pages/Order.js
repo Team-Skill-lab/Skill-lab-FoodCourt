@@ -6,17 +6,16 @@ import axios from 'axios';
 import '../css/Home.css';
 
 const Order = () => {
-  const [orders, setOrders] = useState([
-    { id: 1, Name: "palavu", ifavailable: true, count: 6 },
-    { id: 2, Name: "biriyani", ifavailable: false, count: 4 },
-    { id: 3, Name: "chicken", ifavailable: true, count: 5 },
-    { id: 4, Name: "fish", ifavailable: true, count: 1 },
-    { id: 5, Name: "mutton", ifavailable: true, count: 1 },
-  ]);
+  const [order, setOrder] = useState([]);
   const [total, setTotal] = useState(0);
   const navigate = useNavigate();
+  const userId = '669e766069a34f9fddf9b349'; // Hardcoding user ID for simplicity
 
   useEffect(() => {
+    axios.get(`http://localhost:8080/api/order/${userId}`).then((response) => {
+      setOrder(response.data);
+      setTotal(response.data.reduce((acc, item) => acc + item.price, 0));
+      });
     const newTotal = orders.reduce((sum, order) => sum + order.count, 0);
     setTotal(newTotal);
   }, [orders]);
@@ -32,7 +31,7 @@ const Order = () => {
     const orderData = {
       orderID: new Date().getTime().toString(),
       orderDate: new Date(),
-      userId: '669e766069a34f9fddf9b349',
+      userId,
       menuItems: orders.map(order => ({
         item: order.id,
         quantity: order.count
@@ -41,8 +40,14 @@ const Order = () => {
     };
 
     try {
-      await axios.post('http://localhost:8080/api/orders', orderData);
-      // Clear orders and redirect to feedback page
+      const newOrder = await axios.post('http://localhost:8080/api/orders', orderData);
+
+      // Update user's current order and clear the cart
+      await axios.put(`http://localhost:8080/api/users/${userId}/checkout`, {
+        currentOrder: newOrder.data._id,
+        currentCart: []
+      });
+
       setOrders([]);
       navigate('/Feedback');
     } catch (error) {

@@ -1,13 +1,6 @@
-
-.Main-Container{
-  z-index: 100;
-  background-image: url('../img/food_courtediyt.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}.Main-Container {
+.Main-Container {
   padding-top: 80px;
-  background-color: #000000;
+  background-color: #000000; /* Black background */
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -17,84 +10,74 @@
 .bd-Paper {
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  background-color: #000000;
+  background-color: #000000; /* Black background */
   padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.text-primary {
-  color: rgb(255,179,5) !important;
+.bd-Paper:hover {
+  transform: translateY(-5px); /* Move up on hover */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Larger shadow on hover */
 }
 
-.has-icon .form-control {
-  padding-right: 2.5rem;
-  position: relative;
+.bd-Paper h2 {
+  color: #ffb305; /* Yellow heading */
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
-.position-absolute {
-  position: absolute;
+.bd-Paper form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.dense .form-control {
+.bd-Paper input[type="email"],
+.bd-Paper input[type="number"],
+.bd-Paper input[type="text"],
+.bd-Paper textarea {
+  width: 100%;
   padding: 0.75rem 1.25rem;
-  border: 2px solid #ffffff;
+  margin-bottom: 1rem;
+  border: 2px solid #ffffff; /* White border */
   border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+  color: #ffffff; /* White text */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.dense .form-select {
-  padding: 0.75rem 1.25rem;
-  border: 2px solid #ffffff;
-  border-radius: 4px;
+.bd-Paper input[type="email"]::placeholder,
+.bd-Paper input[type="number"]::placeholder,
+.bd-Paper input[type="text"]::placeholder,
+.bd-Paper textarea::placeholder {
+  color: #6c757d; /* Placeholder color */
 }
 
-.bd-Button {
-  background-color: #ffc107;
+.bd-Paper input[type="email"]:focus,
+.bd-Paper input[type="number"]:focus,
+.bd-Paper input[type="text"]:focus,
+.bd-Paper textarea:focus {
+  outline: none;
+  border-color: #ffc107; /* Yellow border on focus */
+  box-shadow: 0 0 0 0.2rem rgba(255, 179, 5, 0.25); /* Yellow shadow on focus */
+}
+
+.bd-Paper textarea {
+  height: 150px; /* Adjust height as needed */
+}
+
+.bd-Paper button[type="submit"] {
+  background-color: #ffc107; /* Yellow button */
   border: none;
   border-radius: 4px;
-  color: #fff;
-  padding: 0.75rem 1.25rem;
-  font-size: 1.25rem;
+  color: #000000; /* Black text */
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.bd-Button:hover {
-  background-color: #e0a800;
+.bd-Paper button[type="submit"]:hover {
+  background-color: #e0a800; /* Darker yellow on hover */
 }
 
-.form-label {
-  font-weight: 500;
-  color: #495057;
-}
-
-.mb-3 {
-  margin-bottom: 1rem !important;
-}
-
-.text-center {
-  text-align: center !important;
-}
-
-.text-primary h3 {
-  color: inherit;
-}
-
-input::placeholder, textarea::placeholder {
-  color: #6c757d;
-}
-
-::placeholder {
-  color: #6c757d;
-}
-
-.form-control:focus {
-  border-color: #80bdff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-.form-select:focus {
-  border-color: #80bdff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-.formAll{
-  text-decoration: none;
-  color: rgb(255,179,0);
-}
