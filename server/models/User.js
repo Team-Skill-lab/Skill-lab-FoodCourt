@@ -18,6 +18,14 @@ const userSchema = new mongoose.Schema({
         type: [mongoose.Schema.Types.ObjectId],
         ref: 'Order',
         default: []  
+    },
+    currentcart :{
+        type: {
+            mongoose.Schema.Types.ObjectId
+
+        },
+        ref: 'Menu',
+        default: []
     }
 });
 
