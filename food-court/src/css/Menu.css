@@ -158,3 +158,9 @@ body {
 
 
 }
+.Img-IsNot {
+  opacity: 0.5;
+}
+.Img-IsNot :hover{
+  scale: None;
+}

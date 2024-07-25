@@ -1,50 +1,94 @@
 import React, { useState, useEffect } from 'react';
-import Counter from '../components/Counter'; // Assuming Counter component is correctly imported
-import '../css/Order.css';
-import { Link } from 'react-router-dom';
-import { NavLink } from 'react-bootstrap';
-import '../css/Home.css';
-const Order = () => {
-  const [orders, setOrders] = useState([
-    { id: 1, Name: "palavu", ifavailable: true, count: 6 },
-    { id: 2, Name: "biriyani", ifavailable: false, count: 4 },
-    { id: 3, Name: "chicken", ifavailable: true, count: 5 },
-    { id: 4, Name: "fish", ifavailable: true, count: 1 },
-    { id: 5, Name: "mutton", ifavailable: true, count: 1 },
-  ]);
-  const [total, setTotal] = useState(0);
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import axios from 'axios';
+import { Container, Row, Col, Table } from 'react-bootstrap';
+
+const OrderList = () => {
+  const [isOn, setIsOn] = useState(true);
+  const handleToggle = () => setIsOn(!isOn);
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const newTotal = orders.reduce((sum, order) => sum + order.count, 0);
-    setTotal(newTotal);
-  }, [orders]);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/api/orders');
+        setItems(response.data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const handleCountChange = (id, newCount) => {
-    setOrders(orders.map(order =>
-      order.id === id ? { ...order, count: newCount } : order
-    ));
-  };
+    fetchData();
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="order-container">
-      <div className="main-OrderAll">
-        {orders.filter(order => order.count !== 0).map(order => (
-          <div key={order.id} className="order">
-            <h1>Order: {order.Name}</h1>
-            <p>Available: {order.ifavailable ? 'Yes' : 'No'}</p>
-            <Counter
-              number={order.count}
-              onChange={(newCount) => handleCountChange(order.id, newCount)}
-            />
-          </div>
+    <Container>
+      <Row>
+        {items.map((item) => (
+          <Col key={item._id} md={4} className="mb-4">
+            <Card style={{ width: '18rem', height: '100%' }}>
+              <Card.Body className="d-flex flex-column">
+                <Card.Title>{item.orderID}</Card.Title>
+                <Card.Text>{item.orderDate}</Card.Text>
+                <h5>User Name: {item.userId.name}</h5>
+                <Table>
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Order List</th>
+                      <th>Quantity</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {item.menuItems.map((itemOne, index) => (
+                      <tr key={itemOne._id}>
+                        <td>{index + 1}</td>
+                        <td>{itemOne.item ? itemOne.item.name : "NA"}</td>
+                        <td>{itemOne.quantity}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+                <div className="mt-auto">
+                  <Button
+                    className="mr-2 mb-2 "
+                    variant={
+                      item.orderStatus === 'Completed' ? 'success' :
+                      item.orderStatus === 'Pending' ? 'warning' :
+                      item.orderStatus === 'canceled' ? 'danger' :
+                      'secondary'
+                    }
+                    onClick={handleToggle}
+                  >
+                    {item.orderStatus === 'Completed' ? 'Completed' :
+                    item.orderStatus === 'Pending' ? 'Pending' :
+                    item.orderStatus === 'canceled' ? 'Cancelled' :
+                    'Unknown Status'}
+                  </Button>
+                  <Button
+                    className="ml mb-2"
+                    variant="outline-primary"
+                    onClick={handleToggle}
+                  >
+                    {item.orderStatus === 'Completed' ? 'Delete' :
+                    item.orderStatus === 'Pending' ? 'Cancel' : 'Delete'}
+                  </Button>
+                </div>
+              </Card.Body>
+            </Card>
+          </Col>
         ))}
-        <div className='div-cost'>
-          <p className='p-cost'>Total count: {total}</p>
-          <Link className="buttons-Home" to="/Feedback"> Check out </Link>
-        </div>
-      </div>
-    </div>
+      </Row>
+    </Container>
   );
 };
 
-export default Order;
+export default OrderList;

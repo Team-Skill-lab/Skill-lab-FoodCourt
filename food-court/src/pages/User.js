@@ -1,49 +1,43 @@
-import { useState } from "react"
+import { useState ,useEffect } from "react"
 import './Groceries.css'
-const List =[{
-    id: 1,
-    name: "N JEEVAN KUMAR",
-    usn: "4SF22CI057"
-},
-{
-    id: 2,
-    name: "Puvith",
-    usn: "4SF22CI058",
-},{
-    id: 3,
-    name: "Divya shree ",
-    usn: "4SF22CI058",
-},
-{
-    id: 4,
-    name: "Deekshitha ",
-    usn: "4SF22CI041", 
-},
-{
-    id: 4,
-    name: "Annika  ",
-    usn: "4SF22CI011", 
-}
-
-]
+import axios from "axios";
 
 
 export default () => {
-  const [newObject ,setnewObject] = useState(List)
+  const [UserData, setItems] = useState([]);
+const [loading, setLoading] = useState(true);
+const [error, setError] = useState(null);
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const Data = await axios.get('http://localhost:8080/api/users');
+      console.log(Data.data)
+      setItems(Data.data);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchData();
+  
+}, []);
+
   return (<>
     <div className="main-Groceries">
  
-      {List.map((items , index )=>{
+      {UserData.map((items , index )=>{
         return(
           <div className="Groceries" key={index} style={{backgroundColor:"white"}}>
             <h1>Name :{items.name}</h1>
             
            
-            <h1>USN :{items.usn}</h1>
+            <h1>USN :{items.USN}</h1>
             
            
 
-            <button style={{backgroundColor:items.DeliverStatus}} className="buttons" onClick={()=>{setnewObject([...newObject,{id:items.id,name:items.name,price:items.price,quantity:items.quantity}])}}>View</button>
+            <button style={{backgroundColor:items.DeliverStatus}} className="buttons" >View</button>
            <div style={{color:'red'}}>-</div></div>
       )})}
     </div>
