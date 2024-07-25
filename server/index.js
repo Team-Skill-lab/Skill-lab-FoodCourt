@@ -2,6 +2,7 @@ const express = require("express");
 const Menus = require('./route/Menus'); 
 const Users = require('./route/Users');
 const Orders = require('./route/Orders'); 
+const feedbackRoutes = require('./route/feedBacks');
 const app = express();
 const PORT = process.env.PORT || 8080;
 const mongoose = require('mongoose');
@@ -27,6 +28,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/menus', Menus); 
 app.use('/api/users', Users); 
 app.use('/api/orders', Orders);
+app.use('/api/feedback', feedbackRoutes);
+
 
 // Start server
 app.listen(PORT, () => {

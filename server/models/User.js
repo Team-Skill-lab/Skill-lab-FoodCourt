@@ -19,14 +19,17 @@ const userSchema = new mongoose.Schema({
         ref: 'Order',
         default: []  
     },
-    currentcart :{
-        type: {
-            mongoose.Schema.Types.ObjectId
-
+    currentCart: [{
+        item: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'MenuItems',
+          required: true
         },
-        ref: 'Menu',
-        default: []
-    }
+        quantity: {
+          type: Number,
+          required: true
+        }
+      }],
 });
 
 module.exports = mongoose.model("User", userSchema);
