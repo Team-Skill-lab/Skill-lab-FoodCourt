@@ -6,26 +6,38 @@ import axios from 'axios';
 import '../css/Home.css';
 
 const Order = () => {
-  const [order, setOrder] = useState([]);
+  const [orders, setOrders] = useState([]); // Changed from order to orders for consistency
   const [total, setTotal] = useState(0);
   const navigate = useNavigate();
   const userId = '669e766069a34f9fddf9b349'; // Hardcoding user ID for simplicity
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/order/${userId}`).then((response) => {
-      setOrder(response.data);
-      setTotal(response.data.reduce((acc, item) => acc + item.price, 0));
-      });
-    const newTotal = orders.reduce((sum, order) => sum + order.count, 0);
-    setTotal(newTotal);
-  }, [orders]);
+    const fetchOrders = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/api/order/${userId}`);
+        setOrders(response.data);
+        const newTotal = response.data.reduce((acc, item) => acc + item.price * item.count, 0);
+        setTotal(newTotal);
+      } catch (error) {
+        console.error('Error fetching orders:', error);
+      }
+    };
+
+    fetchOrders();
+  }, [userId]); // Removed orders from dependencies to avoid infinite loop
 
   const handleCountChange = (id, newCount) => {
-    setOrders(orders => orders
-      .map(order => (order.id === id ? { ...order, count: newCount } : order))
-      .filter(order => order.count !== 0)
+    setOrders(orders => 
+      orders
+        .map(order => (order.id === id ? { ...order, count: newCount } : order))
+        .filter(order => order.count !== 0)
     );
   };
+
+  useEffect(() => {
+    const newTotal = orders.reduce((sum, order) => sum + order.price * order.count, 0);
+    setTotal(newTotal);
+  }, [orders]);
 
   const handleCheckout = async () => {
     const orderData = {

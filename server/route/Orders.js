@@ -10,17 +10,16 @@ router.get('/', async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 });
-router.get('/:id' , async  (req , res) =>{
+
+router.get('/:userId', async (req, res) => {
     try {
-        const order = await Order.findById(req.params.id).populate('userId').populate('menuItems.item')
-        res.json(order);
+        const orders = await Order.find({ userId: req.params.userId }).populate('menuItems.item');
+        res.json(orders);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
     }
-    catch(err){
-        res.status(500).json({message: err.message})
-    }
+});
 
-
-})
 router.post('/', async (req, res) => {
     const { orderID, orderDate, userId, menuItems } = req.body;
 
